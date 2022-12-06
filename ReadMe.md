@@ -46,10 +46,10 @@ _This subsection breaks down the relationship of each of the above 9 factors and
 
 ## **Directory Structure**
 
-`src` contains the source code used to obtain my results.
+* `src` contains the source code used to obtain my results.
 
-`figures-results` contains the results obtained, as well as complimentary figures.
+* `figures-results` contains the results obtained, as well as complimentary figures.
 
-`data` contains the data used for this analysis
+* `data` contains the data used for this analysis
 
-final results are in `report.pdf`
+* final results are in `report.pdf`
