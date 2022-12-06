@@ -20,26 +20,27 @@ _This section curates a set of factors that affect supply and demand of house pr
 
 **2.1   Factors Chosen Which Affect Supply**
 
-1.  New Builds
-2.  Inventory 
-3.  Supply Chain
-4.  Number of Sales 
+1.  New Builds (`HOUST`)
+2.  Inventory (`ACTLISOUUS`)
+3.  Supply Chain (`Global Supply Chain Pressure Index`)
+4.  Number of Sales (``)
 
 
 **2.2   Factors Chosen Which Affect Demand**
 
-1. Affordability 
-2. Rental Vacancy Rates
-3. Old-Middle Age Dependency Ratio 
-4. Population Rise 
-5. Interest Rate   
+1. Affordability (Housing Affordability Index)
+2. Rental Vacancy Rate
+3. Working Class Demographic (Old-Middle Age Dependency Ratio)  
+4. Population 
+5. 30 year Fixed Rate Mortgage Average 
 
-
+The expectation is that these 9 features / indices would be able to model the behaviour of the Case Shiller index, and by proxy, model a subsection of real estate price movements. 
 
 ## **3. Results**
 _What have the methods achieved?_
 
 ### **3.1 Univariate Analyses**
+_This subsection breaks down the relationship of each of the above 9 factors and the CSI._
 
 ### **3.2 Multivariate Analysis**
 
