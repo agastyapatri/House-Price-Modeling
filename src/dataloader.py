@@ -6,6 +6,7 @@ import numpy as np
 import os  
 import torch 
 import torch.nn as nn
+import matplotlib.pyplot as plt
 
 
 class Data(torch.utils.data.Dataset):
@@ -25,13 +26,42 @@ class Data(torch.utils.data.Dataset):
 
 
     def getdata(self):
-        pass 
+        """
+            1. concatenating the data
+        """
+        #   List of relevant data
+        files = os.listdir(self.path)[1:]
+        target = pd.read_csv(os.path.join(self.path, os.listdir(self.path)[0]))
+        cols = [file[:-4] for file in files]
+        data = []
+        features = pd.DataFrame(columns= cols)
+        relevant_dates = target["DATE"]
+
+        for col in cols:
+            name = col + ".csv"
+            try: 
+                df = pd.read_csv(os.path.join(self.path, name))[-429:]
+                features[col] = df[col]
+            
+            except:
+                continue 
+
+        # print(features)
+        print(relevant_dates[-50:])
+
+
+
+
+
+        
+
+
+                
+
 
 
 if __name__ == "__main__":
     PATH = "/home/agastyapatri/Projects/MachineLearning/House-Price-Modeling/data"
-
-    #   List of relevant data
-    files = os.listdir(PATH)
-    file = files[0]
-    print(file)
+    data = Data(PATH=PATH)
+    data.getdata()
+    
