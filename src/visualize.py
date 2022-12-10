@@ -21,4 +21,9 @@ for col in final_data.columns:
     except:
         continue
 
-print(final_data.head())
+# mort = pd.read_csv(os.path.join(PATH, "MORTGAGE30US.csv"), parse_dates=["DATE"], index_col=["DATE"]).loc["2016-09-01":]
+# indices = mort.index
+# values = mort.values 
+
+final_data = final_data.drop("MORTGAGE30US", axis=1)
+print(final_data.info())

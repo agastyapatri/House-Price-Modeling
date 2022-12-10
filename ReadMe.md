@@ -31,6 +31,8 @@ _This section curates a set of factors that affect supply and demand of house pr
 1.  Real Disposable Personal Income: Per Capita (`A229RX0`)
 2. Working Age Population (Age 15 - 64) (`LFWA64TTUSM647S`)
 3. Population (`POPTHM`)
+   
+**Note: the feature below needs to be fixed.**
 4. 30 year Fixed Rate Mortgage Average (`MORTGAGE30US`)
 
 The expectation is that these 9 features / indices would be able to model the behaviour of the Case Shiller index, and by proxy, model a subsection of real estate price movements. 
