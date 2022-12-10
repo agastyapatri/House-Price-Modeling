@@ -21,4 +21,4 @@ for col in final_data.columns:
     except:
         continue
 
-print(final_data)
+print(final_data.head())
