@@ -37,12 +37,21 @@ _This section curates a set of factors that affect supply and demand of house pr
 
 The expectation is that these 9 features / indices would be able to model the behaviour of the Case Shiller index, and by proxy, model a subsection of real estate price movements. 
 
+
+## **3. Modeling**
+For the purpose of modeling, all the different features are combined into a single signal. This signal will be used to model the Case Shiller Index. 
+
+The signal is obtained by the following formula: 
+
+
+
 ## **3. Results**
 _What have the methods achieved?_
 
 ### **3.1 Univariate Analyses**
 _This subsection breaks down the relationship of each of the above 9 factors and the CSI._
-
+1. The Per Capita Real Disposable Personal Income (RDPI) is positively correlated with Home Prices. This is a measure of how much more people can spend on housing, and the more they can spend to service a mortgage, the higher the house price will be pushed. 
+ 
 ### **3.2 Multivariate Analysis**
 
 ## **Directory Structure**

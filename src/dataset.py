@@ -1,5 +1,5 @@
 """
-    Python class to load the data. 
+    Defining a custom pytorch dataset. 
 """
 import pandas as pd 
 import numpy as np 
