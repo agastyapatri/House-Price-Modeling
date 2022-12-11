@@ -6,7 +6,6 @@ import os
 
 PATH = "/home/agastyapatri/Projects/MachineLearning/House-Price-Modeling/data"
 
-
 #   Function to create the final dataset
 def create_final_data(save = None): 
     data = os.listdir(PATH)
@@ -28,18 +27,46 @@ def create_final_data(save = None):
     if save: 
         final_data.to_csv(os.path.join(PATH, "final_data.csv"))
 
-def visualize():
+
+
+def visualize(option):
     dataset = pd.read_csv(os.path.join(PATH, "final_data.csv"), parse_dates=["DATE"], index_col=["DATE"])
+    dataset = dataset.drop("final_data", axis=1)
+
+    demand_cols = ["UNRATE", "POPTHM", "LFWA64TTUSM647S", "A229RX0"]
+    supply_cols = ["HOUST", "MSACSR", "HSN1F"]  
     cols = dataset.columns
-    # for col in dataset:
-    #     plt.title(str(col))
-    #     dataset[col].plot()
-    #     plt.grid()
-    #     plt.show()
-    #     break 
-    
-    dataset.plot()
-    plt.grid()
-    plt.show()
-create_final_data(save=True)
-visualize()
+    target = dataset["CSUSHPISA"]
+
+    #   Plotting the features: both supply and demand 
+ 
+    if option == "univariate":
+        for col in supply_cols: 
+            ax1 = plt.subplot(1, 2, 1)
+            ax1.scatter(dataset[col].values, target.values, s = 5)
+            plt.grid()
+            plt.xlabel(f"{col}")
+            plt.ylabel("CSUSHPISA")
+            ax1.set_title(f"Case Shiller Index vs {col}")
+
+            ax2 = plt.subplot(1,2,2)
+            ax2.plot(dataset[col].index, dataset[col].values)
+            ax2.set_title(f"{col} vs time")
+            plt.xlabel("time (months)")
+            plt.grid()
+
+            plt.show()
+
+    if option == "time":
+        plt.title(f"Features affecting the Supply of housing")
+        for col in supply_cols:
+            plt.plot(dataset[col].index, dataset[col].values, label=f"{col} vs time")
+        plt.grid()
+        plt.legend()
+        plt.show()
+
+    if option == "corr":
+        pass 
+
+visualize(option = "time")
+

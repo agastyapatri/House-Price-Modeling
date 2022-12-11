@@ -22,7 +22,6 @@ _This section curates a set of factors that affect supply and demand of house pr
 
 1.  New Builds (`HOUST`)
 2.  Monthly Supply of New Houses (`MSACSR`)
-3.  Supply Chain (`Global Supply Chain Pressure Index`)
 4.  Number of Sales (`HSN1F`)
 
 
