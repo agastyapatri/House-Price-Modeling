@@ -28,7 +28,7 @@ def create_final_data(save = None):
         final_data.to_csv(os.path.join(PATH, "final_data.csv"))
 
 
-
+#   Function to visualize the created dataset
 def visualize(option):
     dataset = pd.read_csv(os.path.join(PATH, "final_data.csv"), parse_dates=["DATE"], index_col=["DATE"])
     dataset = dataset.drop("final_data", axis=1)
@@ -66,7 +66,11 @@ def visualize(option):
         plt.show()
 
     if option == "corr":
-        pass 
+        correlations = dataset.corr()
+        sns.heatmap(correlations, annot=True, cmap="coolwarm")
+        plt.title("Correlation matrix of the Dataset")
+        plt.show()
 
-visualize(option = "time")
+visualize(option = "corr")
+
 
