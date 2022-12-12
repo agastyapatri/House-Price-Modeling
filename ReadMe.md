@@ -56,6 +56,7 @@ For the purpose of building a Model which is trained on the data, I created LSTM
 
 * The network was trained on the 429 samples, and achieved a **Mean Squared Error of 3.12942**.
 
+To experiment with different hyperparameters, it is easy to edit all of them in `main.py`
 
 
 ## **3. Results**
