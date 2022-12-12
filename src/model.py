@@ -13,7 +13,9 @@ class RNN(nn.Module):
         self.num_layers = num_layers
 
         self.lstm = nn.LSTM(input_dim, hidden_dim, num_layers, batch_first = True)
-        self.fc = nn.Linear(hidden_dim, output_dim)
+        self.fc1 = nn.Linear(hidden_dim, int(hidden_dim/2))
+        self.activation = nn.ReLU()
+        self.fc2 = nn.Linear(int(hidden_dim/2), output_dim)
 
 
     def forward(self, x):
@@ -22,11 +24,12 @@ class RNN(nn.Module):
         c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_dim, requires_grad=True)
 
         out, (hn, cn) = self.lstm(x, (h0.detach(), c0.detach()))
-        out = self.fc(out[:, -1, :])
+        out = self.activation(self.fc1(out[:, -1, :]))
+        out = self.fc2(out)
         return out 
 
 if __name__ == "__main__":
-    net = RNN(input_dim = 7, hidden_dim = 1,  num_layers = 2,  output_dim = 1)
+    net = RNN(input_dim = 7, hidden_dim = 5,  num_layers = 2,  output_dim = 1)
     testdata = torch.randn(1, 1000, dtype=torch.float32)
     print(net)
 

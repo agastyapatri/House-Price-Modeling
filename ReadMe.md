@@ -32,17 +32,11 @@ _This section curates a set of factors that affect supply and demand of house pr
 3. Population (`POPTHM`) 
 4. Unemployment Rate (`UNRATE`)
    
-**Note: the feature below needs to be fixed.**
-4. 30 year Fixed Rate Mortgage Average (`MORTGAGE30US`)
-
-The expectation is that these 9 features / indices would be able to model the behaviour of the Case Shiller index, and by proxy, model a subsection of real estate price movements. 
-
-
 ## **3. Modeling**
-For the purpose of modeling, all the different features are combined into a single signal. This signal will be used to model the Case Shiller Index. 
+For the purpose of building a Model which is trained on the data, 
 
-The signal is obtained by the following formula: 
 
+Finally, for training, the following network is used
 
 
 ## **3. Results**

@@ -12,15 +12,18 @@ from src.model import RNN
 from src.traintest import Trainer 
 
 
+PATH = "/home/agastyapatri/Projects/MachineLearning/House-Price-Modeling/"
+
 #   1. Loading the data
-dataset = Data(path="/home/agastyapatri/Projects/MachineLearning/House-Price-Modeling/data/final_data.csv")
+dataset = Data(path=os.path.join(PATH, "data/final_data.csv"))       
 dataloader = torch.utils.data.DataLoader(dataset, batch_size = 1, shuffle=False)
+ 
 
-#   2. Defining the model and hyperparameters
-model = RNN(input_dim = 7, hidden_dim = 32,  num_layers = 2,  output_dim = 1)
-loss_fn = nn.MSELoss()
-optimizer = torch.optim.Adam(model.parameters(), lr = 0.01)
+#   2. Defining the LSTM network
+network = RNN(input_dim = 7, hidden_dim = 24,  num_layers = 20,  output_dim = 1)
+
+#   3. Conducting the training process
+trainer = Trainer(model = network, dataloader=dataloader, num_epochs=50, lr=0.0001)
 
 
-#   3. Enabling the training of the model on the created data. 
-trainer = Trainer(num_epochs=100, lr=0.01)
+trained_network = network.load_state_dict(torch.load(os.path.join(PATH, "figures-results/saved_network.pth")))
