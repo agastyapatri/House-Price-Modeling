@@ -41,7 +41,7 @@ class Trainer(nn.Module):
             
             # reporting after one epoch of training
             if (i+1)%length == 0:
-                avg_epoch_loss = running_loss / length 
+                avg_epoch_loss = running_loss / (length*1000) 
                 print(f"Training Epoch: {epoch+1} | Epoch Loss = {round(avg_epoch_loss, 5)}")
 
         return self.network, avg_epoch_loss
@@ -64,13 +64,14 @@ class Trainer(nn.Module):
 
 
 if __name__ == "__main__":
+    PATH = "/home/agastyapatri/Projects/MachineLearning/House-Price-Modeling/"
  
     dataset = Data(path="/home/agastyapatri/Projects/MachineLearning/House-Price-Modeling/data/final_data.csv")       
  
     dataloader = torch.utils.data.DataLoader(dataset, batch_size = 1, shuffle=False)
  
-    network = RNN(input_dim = 7, hidden_dim = 25,  num_layers = 18,  output_dim = 1)
+    network = RNN(input_dim = 7, hidden_dim = 24,  num_layers = 20,  output_dim = 1)
 
-    trainer = Trainer(model = network, dataloader=dataloader, num_epochs=50, lr=0.0001)
+    network.load_state_dict(torch.load(os.path.join(PATH, "figures-results/saved_network.pth")))
 
-    # print(trainer.train_all_epochs())
+    

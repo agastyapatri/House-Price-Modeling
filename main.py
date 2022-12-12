@@ -14,16 +14,20 @@ from src.traintest import Trainer
 
 PATH = "/home/agastyapatri/Projects/MachineLearning/House-Price-Modeling/"
 
-#   1. Loading the data
+"""1. Loading the data"""
 dataset = Data(path=os.path.join(PATH, "data/final_data.csv"))       
 dataloader = torch.utils.data.DataLoader(dataset, batch_size = 1, shuffle=False)
  
 
-#   2. Defining the LSTM network
+"""2. Defining the LSTM network"""
 network = RNN(input_dim = 7, hidden_dim = 24,  num_layers = 20,  output_dim = 1)
 
-#   3. Conducting the training process
+"""3. Conducting the training process. uncomment the train_all_epochs() line to train the network again """
 trainer = Trainer(model = network, dataloader=dataloader, num_epochs=50, lr=0.0001)
+# trained_network = trainer.train_all_epochs(save=True, root=os.path.join(PATH, "figures-results/saved_network.pth"))
 
 
-trained_network = network.load_state_dict(torch.load(os.path.join(PATH, "figures-results/saved_network.pth")))
+"""4. Loading the trained network. network is now the model that was trained. Use this to make predictions."""
+network.load_state_dict(torch.load(os.path.join(PATH, "figures-results/saved_network.pth")))
+
+
